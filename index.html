@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title> Kalkulator guide </title>
+</head>
+<body>
+    <h1> Kalkulator tutorial C# </h1>
+
+    <h3> For å kunne følge denne tutorialen for å lage en kalkulator i c# kreves  </h3>
+
+    <ul>
+        <li> <h4> Kode editor, visual code er anbefalt </h3> </li>
+        <li> <h4> Installert C#/Dotnet </h3> </li>
+        <li> <h4> Vil hjelpe med litt erfaring med programmering </h3> </li>
+    </ul>
+
+    <br><br>
+
+    <h3> Det første som trengs i programmet er input </h3>
+    
+    <pre> <code class="language-csharp">
+    Console.Write("Calculation: ");
+
+    string? calculation = Console.ReadLine();
+    Console.Write("\x1b[1A\x1b[2K");
+    </code> </pre>
+
+    <h3> Programmet vet ikke om du faktisk får noe input, så derfor trenger du å gjøre stringen nullable. </h3>
+    <h3> Koden som kommer etter vil fjerne linjen rett over, altså selve regnestykket, det vil vi formatere selv. </h3>
+    <br><br>
+
+    <h3> Vi kan nå behandle inputen vi har fått. </h3>
+
+    <pre> <code class="language-csharp">
+    if (calculation != null)
+    &emsp;{
+        &emsp;var sign = new[] {"+", "-", "*", "/"}.First(calculation.Contains);
+
+        &emsp;var split = calculation.Split(sign);
+
+        &emsp;var num1 = float.Parse(split[0]);
+        &emsp;var num2 = float.Parse(split[1]);
+    }
+    </code> </pre>
+
+    <h3> Vi må sjekke først om det er noe input. </h3>
+    <h3> Så går vi gjennom en liste av mulige operatører og sjekker om inputten inneholder en av dem. </h3>
+    <h3> Etter det kan vi lett få tak i de relevante verdiene og gjøre de om til float slik at vi får et mer nøyaktig resultat. </h3>
+    <br><br>
+
+    <h3> Og nå kan vi regne ut resultatet. </h3>
+
+    <pre> <code class="language-csharp">
+    var result = sign switch
+    {
+        "+" => num1 + num2,
+        "-" => num1 - num2,
+        "*" => num1 * num2,
+        "/" => num1 / num2,
+        _ => throw new InvalidOperationException("Invalid operator")
+    };
+
+    Console.WriteLine($"{num1} {sign} {num2} = {result}");
+    </code> </pre>
+
+    <h3> Gjennom en inline switch statement kan vi sjekke hva slags regnestykke vi har, og så kan vi få tak i resultatet. </h3>
+    <h3> På slutten er det bare å skrive ut det fulle regnestykket, og da er vi ferdig. </h3>
+
+</body>
+</html>

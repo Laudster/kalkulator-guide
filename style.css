@@ -1,0 +1,25 @@
+body
+{
+    font-family:'Courier New', Courier, monospace;
+    color: rgb(107, 101, 101);
+    margin-left: 30%;
+}
+
+h1
+{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+h3
+{
+    width: 40%;
+    margin-bottom: 4%;
+} 
+
+pre
+{
+    background-color: black;
+    color: white;
+    width: 51%;
+}
