@@ -26,10 +26,10 @@
     <h3> Det første som trengs i programmet er input </h3>
     
     <pre> <code class="language-csharp">
-    Console.Write("Calculation: ");
+Console.Write("Calculation: ");
 
-    string? calculation = Console.ReadLine();
-    Console.Write("\x1b[1A\x1b[2K");
+string? calculation = Console.ReadLine();
+Console.Write("\x1b[1A\x1b[2K");
     </code> </pre>
 
     <h3> Programmet vet ikke om du faktisk får noe input, så derfor trenger du å gjøre stringen nullable. </h3>
@@ -39,15 +39,15 @@
     <h3> Vi kan nå behandle inputen vi har fått. </h3>
 
     <pre> <code class="language-csharp">
-    if (calculation != null)
-    &emsp;{
-        &emsp;var sign = new[] {"+", "-", "*", "/"}.First(calculation.Contains);
+if (calculation != null)
+{
+    var sign = new[] {"+", "-", "*", "/"}.First(calculation.Contains);
 
-        &emsp;var split = calculation.Split(sign);
+    var split = calculation.Split(sign);
 
-        &emsp;var num1 = float.Parse(split[0]);
-        &emsp;var num2 = float.Parse(split[1]);
-    }
+    var num1 = float.Parse(split[0]);
+    var num2 = float.Parse(split[1]);
+}
     </code> </pre>
 
     <h3> Vi må sjekke først om det er noe input. </h3>
@@ -58,16 +58,16 @@
     <h3> Og nå kan vi regne ut resultatet. </h3>
 
     <pre> <code class="language-csharp">
-    var result = sign switch
-    {
-        "+" => num1 + num2,
-        "-" => num1 - num2,
-        "*" => num1 * num2,
-        "/" => num1 / num2,
-        _ => throw new InvalidOperationException("Invalid operator")
-    };
+var result = sign switch
+{
+    "+" => num1 + num2,
+    "-" => num1 - num2,
+    "*" => num1 * num2,
+    "/" => num1 / num2,
+    _ => throw new InvalidOperationException("Invalid operator")
+};
 
-    Console.WriteLine($"{num1} {sign} {num2} = {result}");
+Console.WriteLine($"{num1} {sign} {num2} = {result}");
     </code> </pre>
 
     <h3> Gjennom en inline switch statement kan vi sjekke hva slags regnestykke vi har, og så kan vi få tak i resultatet. </h3>
